@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="tools.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <nav class="menu-bar">
+        <div class="logo">
+            <!-- <img src="Logo.jpg" alt="Aditya Vyawahare"> -->
+        </div>
+        <ul>
+            <li><a href="#home" class="menu-link">Home</a></li>
+            <li><a href="#education" class="menu-link">Education</a></li>
+            <li><a href="#experience" class="menu-link">Experience</a></li>
+            <li><a href="#projects" class="menu-link">Projects</a></li>
+            <li><a href="#publications" class="menu-link">Publications</a></li>
+            <div class="theme-switch-div">
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-checkbox">
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </ul>
+    </nav>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const themeSwitchCheckbox = document.getElementById('theme-checkbox');
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    
+    if (currentTheme) {
+        document.body.className = currentTheme;
+        if (currentTheme === 'dark') themeSwitchCheckbox.checked = true;
+    }
+    
+    themeSwitchCheckbox.addEventListener('change', () => {
+        document.body.classList.toggle('dark', themeSwitchCheckbox.checked);
+        let theme = themeSwitchCheckbox.checked ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+    });
+    
+    // Smooth scrolling
+    document.querySelectorAll('.menu-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            let targetId = this.getAttribute('href');
+            let targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                let offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+    
+    // Highlight active section
+    const sections = document.querySelectorAll('[id]'); // Select all elements with an id
+    const navLinks = document.querySelectorAll('.menu-link');
+    
+    function highlightActiveSection() {
+        let scrollPosition = window.pageYOffset;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollPosition >= sectionTop - 150 && scrollPosition < sectionTop + sectionHeight - 150) {
+                const currentId = section.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', highlightActiveSection);
+    highlightActiveSection(); // Call once to set initial state
+});
+    </script>
+
+<div class="container">
+    <div class="content">
+        <div class="profile" id="home">
+            <div style="display: flex; flex-direction: row;">
+                <div class="profile-image">
+                    <img src="me.jpg" alt="Aditya Vyawahare">
+                </div>
+                <div class="profile-info">
+                    <h2>Hi, I am</h2>
+                <h1 style="font-size: 50px;">Aditya Vyawahare</h2>
+                <a href="Aditya_Vyawahare_Resume.pdf" class="btn" download>Download CV</a>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/aditya-vyawahare/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Adityavyawahare" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=1i_X_ZgAAAAJ&hl=en&oi=ao" target="_blank"><i class="fab fa-google"></i></a>
+                </div>
+                </div>
+            </div>
+            <div class="description">
+                <p> 
+                    Hello! I'm a Computer Science graduate student at the University of Illinois Urbana-Champaign with a passion for Natural Language Processing, Machine Learning, Computer Vision, and Cloud Computing.
+    
+                    I have hands-on research experience in projects involving machine translation, text summarization, sentiment analysis, and generative models. I've had the privilege of presenting my work at prestigious conferences and workshops like ICML, ACL, COLING, and EMNLP.
+                    
+                    Proficient in PyTorch and TensorFlow, I enjoy exploring innovative solutions to complex problems in the realm of AI. I'm actively looking for Spring 2025 opportunities in the domains of machine learning and data science.
+                </p>
+            </div>
+        </div>
+
+        <div class="tools-container">
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                <h4>Python</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                <h4>C++</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                <h4>Java</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                <h4>JavaScript</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                <h4>HTML</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS">
+                <h4>CSS</h4>
+            </div>
+
+
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                <h4>React</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                <h4>Node.js</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask">
+                <h4>Flask</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/fastapi/fastapi-original.svg" alt="FastAPI">
+                <h4>FastAPI</h4>
+            </div>
+
+
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                <h4>Git</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                <h4>TensorFlow</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                <h4>PyTorch</h4>
+            </div>
+            
+
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                <h4>MongoDB</h4>
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                <h4>MySQL</h4>
+            </div>
+
+            <div class="tool-item">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                <h4>AWS</h4> 
+            </div>
+            <div class="tool-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP">
+                <h4>GCP</h4>
+            </div>
+        </div>
+
+
+        <div class="education-section" id="education">
+            <h2>Education</h2>
+            <div class="education-container">
+                <div class="education-item">
+                    <div class="education-logo-description">
+                        <img src="UIUC.png" alt="University of Illinois Logo" class="education-logo">
+                        <div class="education-description">
+                            <h3>University of Illinois at Urbana-Champaign</h3>
+                            <p>Master of Science in Computer Science</p>
+                            <p>January 2024 - May 2025</p>
+                            <p>GPA: 3.95/4.0</p>
+                        </div>
+                    </div>
+                    <div class="coursework">
+                        <span>CS 598: Text Mining LLMs</span>
+                        <span>CS 425: Distributed Systems</span>
+                        <span>CS 411: Database Systems</span>
+                        <span>CS 498: Cloud Computing Applications</span>
+                        <span>CS 427: Software Engineering</span>
+                        <span>CS 433: User Centered Machine Learning</span>
+                        <span>CS 434: Artificial Intelligence</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-logo-description">
+                        <img src="PICT.jpg" alt="PICT Logo" class="education-logo">
+                        <div class="education-description">
+                            <h3>Pune Institute of Computer Technology</h3>
+                            <p>Bachelor of Engineering in Computer Engineering</p>
+                            <p>Honors in Artificial Intelligence and Machine Learning</p>
+                            <p>CGPA: 9.24/10.0</p>
+                        </div>
+                    </div>
+                    <div class="coursework">
+                        <span>CS 411: Machine Learning</span>
+                        <span>CS 412: Artificial Intelligence</span>
+                        <span>CS 413: Cloud Computing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="experience-section" id="experience">
+            <h2>Experience</h2>
+            <div class="experience-container">
+          
+              <div class="experience-item">
+                <h3>Research Assistant</h3>
+                <p class="company">Social Computing Systems Lab, Champaign, Illinois</p>
+                <p class="duration">June 2024 – January 2025</p>
+                <ul>
+                  <li>Developed a full-stack app for therapy video analysis using React, FastAPI, and MongoDB, enabling therapists to analyze client behavior with a multimodal chatbot powered by Gemini and GPT-4o.</li>
+                  <li>Enhanced chatbot's interviewing capabilities for an emergency support application by 80%, allowing victims to report incidents and receive real-time critical assistance.</li>
+                  <li>Engineered a roleplaying chatbot in GPT-4o to simulate 20+ unique victim emotions and scenarios for police training at UIUC.</li>
+                </ul>
+              </div>
+          
+              <div class="experience-item">
+                <h3>Machine Learning Intern</h3>
+                <p class="company">L3Cube, Pune, Maharashtra</p>
+                <p class="duration">June 2022 – June 2023</p>
+                <ul>
+                  <li>Created the first public multi-domain Marathi sentiment analysis dataset with 60,000 samples across 4 domains.</li>
+                  <li>Proposed a multi-domain model, attracting 300+ downloads monthly on Huggingface.</li>
+                </ul>
+              </div>
+          
+              <div class="experience-item">
+                <h3>Undergraduate Research Assistant</h3>
+                <p class="company">Pune Institute of Computer Technology</p>
+                <p class="duration">October 2021 – June 2023</p>
+                <ul>
+                  <li>Researched machine translation for Dravidian and Sorbian languages, evaluating Transformer, LSTM, and other models.</li>
+                  <li>Led a team to implement sentiment analysis of low-resource African languages for SemEval 2023.</li>
+                </ul>
+              </div>
+          
+              <div class="experience-item">
+                <h3>Software Engineering Intern</h3>
+                <p class="company">AlgoAnalytics Pvt. Ltd., Pune, Maharashtra</p>
+                <p class="duration">December 2021 – May 2022</p>
+                <ul>
+                  <li>Engineered a Kivy-based mobile app for real-time factory surveillance alerts.</li>
+                  <li>Collaborated on a Tkinter-based desktop app to implement model-driven anomaly detection, enabling instant notifications.</li>
+                </ul>
+              </div>
+          
+            </div>
+          </div>
+          
+
+        <div class="projects-section" id="projects">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                    <div class="project-item">
+                        <div class="project-info">
+                        <h3>LEARNAI</h3>
+                        <ul>
+                            <li>Developed a full-stack application, including admin and student interfaces, enabling professors to upload course content and students to query the video content using vision-language models.</li>
+                            <li>Implemented Retrieval-Augmented Generation (RAG) and LLM agents to query uploaded course materials across multiple formats (documents, PDFs, links, PPTs), creating a personalized and effective learning environment.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                        <i class="fab fa-js-square"></i>
+                        <!-- Add more icons as needed -->
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-info">
+                        <h3>GROCKIT</h3>
+                        <ul>
+                            <li>Finetuned GPT-2 to predict the customer's next grocery list based on past receipts, achieving a 16% improvement in prediction accuracy over baseline models.</li>
+                            <li>Built Flask APIs to handle prediction requests from a Node.js backend, for generating real-time grocery list predictions.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <i class="fab fa-python"></i>
+                        <i class="fab fa-git-alt"></i>
+                        <!-- Add more icons as needed -->
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-info">
+                    <h3>MOVIEGRAM</h3>
+                    <ul>
+                        <li>Finetuned GPT-2 to predict the customer's next grocery list based on past receipts, achieving a 16% improvement in prediction accuracy over baseline models.</li>
+                        <li>Built Flask APIs to handle prediction requests from a Node.js backend, for generating real-time grocery list predictions.</li>
+                    </ul>
+                    </div>
+                    <div class="project-tech">
+                        <i class="fab fa-python"></i>
+                        <i class="fab fa-git-alt"></i>
+                        <!-- Add more icons as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="publications-section" id="publications">
+            <h2>Publications</h2>
+            <div class="publications-container">
+                <!-- Publication Item 1 -->
+                <div class="publication-item">
+                    <div>
+                        <h3>PICT@ DravidianLangTech-ACL2022: Neural machine translation on dravidian languages</h3>
+                    </div>
+                    <div style="display: flex;">
+                        <p>The Second Workshop on Speech and Language Technologies for Dravidian Languages - ACL 2022</p>    
+                        <a href="https://aclanthology.org/2022.acl-long.100.pdf" target="_blank">Read Publication</a>
+                    </div>
+                </div>
+                <!-- Publication Item 2 -->
+                <div class="publication-item">
+                    <div>
+                        <h3>Abstractive approaches to multidocument summarization of medical literature reviews</h3>
+                    </div>
+                    <div style="display: flex;">
+                        <p> Scholarly Document Processing Workshop - COLING 2022</p>    
+                        <a href="https://aclanthology.org/2022.acl-long.100.pdf" target="_blank">Read Publication</a>
+                    </div>
+                </div>
+                <!-- Publication Item 3 -->
+                <div class="publication-item">
+                    <div>
+                        <h3>L3Cube-MahaSent-MD: A Multi-domain Marathi Sentiment Analysis Dataset and Transformer Models</h3>
+                    </div>
+                    <div style="display: flex;">
+                        <p>Data-centric Machine Learning Research - ICML 2023</p>    
+                        <a href="https://aclanthology.org/2022.acl-long.100.pdf" target="_blank">Read Publication</a>
+                    </div>
+                </div>
+                <!-- Publication Item 4 -->
+                <div class="publication-item">
+                    <div>
+                        <h3>Implementing deep learning-based approaches for article summarization in Indian languages</h3>
+                    </div>
+                    <div style="display: flex;">
+                        <p>14th Forum for Information Retrieval Evaluation - ILSUM 2022</p>
+                        <a href="https://aclanthology.org/2022.acl-long.100.pdf" target="_blank">Read Publication</a>
+                    </div>
+                </div>
+                <!-- Publication Item 5 -->
+                <div class="publication-item">
+                    <div>
+                        <h3>Robust Sentiment Analysis for Low Resource languages Using Data Augmentation Approaches: A Case Study in Marathi</h3>
+                    </div>
+                    <div style="display: flex;">
+                        <p>arXiv preprint</p>
+                        <a href="https://aclanthology.org/2022.acl-long.100.pdf" target="_blank">Read Publication</a>
+                    </div>        
+                </div>
+                <!-- Publication Item 6 -->
+                <div class="publication-item">
+                    <div>
+                        <h3>Unsupervised and Very-Low Resource Supervised Translation on German and Sorbian Variant Languages</h3>
+                    </div>
+                <div style="display: flex;">
+                    <p>Seventh Conference On Machine Translation (WMT22)- EMNLP 2022</p>
+                    <a href="https://aclanthology.org/2022.acl-long.100.pdf" target="_blank">Read Publication</a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="contact-section" id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:WQVt4@example.com">WQVt4@example.com</a></p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+        </div> -->
+
+
+        <footer class="site-footer">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/aditya-vyawahare/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Adityavyawahare" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=1i_X_ZgAAAAJ&hl=en&oi=ao" target="_blank"><i class="fab fa-google"></i></a>
+            </div>
+            <p>&copy; by Aditya Vyawahare</p>
+        </footer>
+
+    </div>
+</div>
+
+</body>
+</html>

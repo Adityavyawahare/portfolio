@@ -182,7 +182,7 @@ input:checked + .slider:before {
 }
 
 .description p {
-    font-size: 22px;
+    font-size: 19px;
     line-height: 1.6;
     margin-bottom: 15px;
     text-align: justify;
@@ -206,6 +206,10 @@ input:checked + .slider:before {
     margin: 0 10px;
 }
 
+.dark .social-links a {
+    color: white;
+}
+
 .btn:hover, .social-links a:hover {
     opacity: 0.8;
 }
@@ -220,68 +224,6 @@ input:checked + .slider:before {
     color: #0056b3; /* Icon hover color */
 }
 
-.education-section h2 {
-    font-size: 2.5em;
-    text-align: center;
-    margin: 4% 0 2% 0;
-}
-
-.education-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto 20%;
-    gap: 20px;
-}
-
-.education-item {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.education-logo-description {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.education-logo {
-    width: 100px; /* Adjust based on your preference */
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.education-description h3 {
-    margin: 0;
-}
-
-.coursework {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1px;
-    margin-top: 20px;
-}
-
-.coursework span {
-    background-color: #e0e0e0;
-    border-radius: 20px;
-    padding: 5px 5px;
-    font-size: 10px;
-}
-.coursework {
-    margin-top: 10px;
-}
-
-.coursework span {
-    display: inline-block;
-    background-color: #e0e0e0;
-    border-radius: 20px;
-    padding: 5px 15px;
-    margin: 5px;
-    font-size: 14px;
-}
 
 h2, h3 {
     margin: 10px 0;
@@ -291,154 +233,6 @@ p {
     margin: 5px 0;
 }
 
-
-.experience-section {
-    padding: 50px;
-    margin: auto 15%;
-  }
-  
-  .experience-section h2 {
-    font-size: 2.5em;
-    text-align: center;
-    margin: 4% 0 2% 0;
-  }
-  
-  .experience-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .experience-item {
-    background: #ffffff;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .experience-item h3 {
-    font-size: 1.5em;
-    color: #333;
-  }
-  
-  .experience-item .company {
-    font-weight: bold;
-    color: #555;
-  }
-  
-  .experience-item .duration {
-    color: #777;
-    font-style: italic;
-  }
-  
-  .experience-item ul {
-    margin: 10px 0 0;
-    padding: 0 0 0 20px;
-  }
-  
-  .experience-item ul li {
-    line-height: 1.6;
-  }  
-
-.projects-section {
-    padding: 20px;
-    margin:auto 15%;
-    background-color: #ffffff;
-}
-
-.projects-section h2 {
-    font-size: 2.5em;
-    text-align: center;
-    margin: 4% 0 2% 0;
-}
-
-.projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.project-item {
-    background-color: #f5f5f5 ;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: calc(33.333% - 20px);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-info {
-    margin-top: 10px;
-}
-.project-tech {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.project-tech i {
-    font-size: 24px;
-    margin-right: 10px;
-    color: #777;
-}
-
-@media (max-width: 768px) {
-    .project-item {
-        width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 480px) {
-    .project-item {
-        width: 100%;
-    }
-}
-
-.publications-section h2 {
-    font-size: 2.5em;
-    text-align: center;
-    margin: 4% 0 2% 0;
-}
-
-.publication-item {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 10px 10vw;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.publication-item h3 {
-    color: #333;
-    margin-top: 0;
-}
-
-.publication-item p {
-    margin-bottom: 10px;
-    padding: auto;
-    margin: auto auto auto 0px;
-}
-
-.publication-item a {
-    margin: auto 0px auto auto;
-    display: inline-block;
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.publication-item a:hover {
-    background-color: #0056b3;
-}
 
 .contact-section {
 }   
@@ -455,6 +249,11 @@ p {
     color: #333; /* Example text color */
 }
 
+.dark .site-footer {
+    background-color: #333;
+    color: white;
+}
+
 .site-footer .social-links {
     margin-bottom: 20px; /* Adds some space between the social links and the copyright text */
 }
@@ -463,6 +262,10 @@ p {
     color: #333; /* Example icon color */
     margin: 0 10px; /* Spacing between icons */
     font-size: 24px; /* Icon size */
+}
+
+.dark .site-footer .social-links a {
+    color: white;
 }
 
 .site-footer .social-links a:hover {

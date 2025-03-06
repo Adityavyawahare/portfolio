@@ -1,0 +1,67 @@
+
+.experience-section {
+    padding: 50px;
+    margin: auto 15%;
+}
+
+.experience-section h2 {
+font-size: 2.5em;
+text-align: center;
+margin: 4% 0 2% 0;
+}
+
+.experience-container {
+display: flex;
+flex-direction: column;
+gap: 30px;
+}
+
+.experience-item {
+background: #ffffff;
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 10px;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .experience-item {
+background: #494949;
+border: 1px solid #555;
+box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.experience-item h3 {
+font-size: 1.5em;
+color: #333;
+}
+
+.dark .experience-item h3 {
+color: white;
+}
+
+.experience-item .company {
+font-weight: bold;
+color: #555;
+}
+
+.dark .experience-item .company {
+color: rgb(186, 186, 186);
+}
+
+.experience-item .duration {
+color: #777;
+font-style: italic;
+}
+
+.dark .experience-item .duration {
+color: #797979;
+}
+
+.experience-item ul {
+margin: 10px 0 0;
+padding: 0 0 0 20px;
+}
+
+.experience-item ul li {
+line-height: 1.6;
+}  

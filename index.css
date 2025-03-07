@@ -1,10 +1,58 @@
+:root {
+    /*Light Mode*/
+    /* Base Colors */
+    --background: #ffffff;
+    --secondary-background: #f0f0f0;
+    
+    /* Text Colors */
+    --primary-text: #333333;
+    --secondary-text: #666666;
+  
+    /* Light Text Colors */
+    --primary-text: #212121;
+    --secondary-text: #424242;
+    
+    /* Light-Accent & Alerts */
+    --accent: #03DAC6;
+    --light-accent: #7ad4cb;
+    --error: #CF6679;
+  
+    --card-color: #f0f0f0;
+    
+    /*Dark Mode*/
+    /* Base Colors */
+    --dark-background: #232323;            /* lighter than #121212 for a softer dark mode */
+    --dark-secondary-background: #2a2a2a;    /* a slightly lighter tone for secondary elements */
+    
+    /* Text Colors */
+    --dark-primary-text: #E0E0E0;
+    --dark-secondary-text: #B0B0B0;
+  
+    /* Dark Text Colors */
+    --dark-complementary-primary-text: #f0f0f0;  /* much lighter for better contrast on darker surfaces */
+    --dark-complementary-secondary-text: #c0c0c0;  /* a softer complementary shade */
+    
+    /* dark-Accent & Alerts */
+    --dark-accent: #03DAC6;
+    --error: #CF6679;
+    --dark-accent-secondary: #039b9b;
+  
+    --dark-card-color: #3a3a3a;              /* a lighter card color compared to the previous #494949 */
+    --transition-duration: 1.4s;
+
+    --accent-secondary: #3ab9b9;
+    --light-accent-secondary: #5baea6;
+  }
+  
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     margin: 0;
     padding: 0;
     padding-top: 60px;
-    transition: background-color 1.4s, color 1.4s;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
     scroll-padding-top: 100px;
+    overflow-x: hidden; 
 }
 
 html {
@@ -17,36 +65,54 @@ html {
 }
 
 .menu-link {
-    color: white;
+    color: var(--primary-text);
     text-decoration: none;
     padding: 10px 15px;
     transition: background-color 0.3s ease;
     border-radius: 10px;
+
 }
 
 .menu-link.active {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--accent-secondary);
+    color: var(--primary-text);
+}
+
+.dark .menu-link.active {
+    background-color: var(--dark-accent-secondary);
 }
 
 .menu-link:hover {
-    background-color: #72b6ff;
-    color: white;
-    
+    background-color: var(--light-accent-secondary);
+    color: var(--primary-text);   
+}
+
+
+
+.menu-bar ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between items */
+    width: 100%; /* Take full width */
+    padding-right: 20px; /* Add padding to prevent overlap with scrollbar */
+    /* Keep other properties */
 }
 
 /* Container for the switch */
 .theme-switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 42px;  /* Further reduced from 50px */
+    height: 24px; /* Further reduced from 28px */
 }
 
 .theme-switch-div {
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: calc(env(safe-area-inset-right, 15px) + 25px);
+    position: absolute;
+    right: 0;
 }
 
 /* Hides the checkbox */
@@ -64,7 +130,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--dark-secondary-background);
     transition: .4s;
     border-radius: 34px;
 }
@@ -72,17 +138,25 @@ html {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
+    height: 18px;  /* Further reduced from 22px */
+    width: 18px;   /* Further reduced from 22px */
+    left: 3px;     
+    bottom: 3px;   
+    background-color: var(--accent);
     transition: .4s;
     border-radius: 50%;
 }
 
+.dark .slider::before {
+    background-color: var(--accent);
+}
+
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: var(--dark-background);
+}
+
+.dark input:checked + .slider {
+    background-color: var(--background);
 }
 
 input:focus + .slider {
@@ -90,7 +164,7 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(18px); /* Adjusted from 22px to match new width */
 }
 
 /* Rounded sliders */
@@ -104,17 +178,41 @@ input:checked + .slider:before {
 
 .menu-bar {
     display: flex;
-    background-color: #eeeeee;
-    padding: 10px 20px;
+    align-items: center;
+    padding: 20px calc(15px + env(safe-area-inset-right, 15px));
+    background-color: var(--background);
     list-style-type: none;
     z-index: 1000;
     position: fixed;
-    justify-content: center;
     margin-top: 0;
     top: 0;
     left: 0;
     width: 100%;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.menu-bar ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative; /* This is important for absolute positioning inside */
+}
+
+.menu-bar ul .nav-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.menu-link {
+    color: var(--primary-text);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
 }
 
 .menu-bar li {
@@ -128,16 +226,18 @@ input:checked + .slider:before {
 }
 
 .dark {
-    background-color: #333;
-    color: white;
+    background-color: var(--dark-background);
+    color: var(--dark-primary-text);
 }
 
 .dark .menu-bar {
-    background-color: #555;
+    background-color: var(--dark-secondary-background);
+    color: var(--dark-primary-text);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .dark .menu-bar a {
-    color: white;
+    color: var(--dark-primary-text);
 }
 
 #theme-switch {
@@ -177,12 +277,25 @@ input:checked + .slider:before {
     margin: auto auto auto 0px;
 }
 
+.profile .profile-info h1 {  
+    font-size: clamp(28px, 5vw, 55px) !important;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.profile-info h2{
+    font-size: 1.8em;
+    margin-bottom: -5px;
+}
+
 .description {
     margin: 2vw 5vw;
 }
 
 .description p {
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.6;
     margin-bottom: 15px;
     text-align: justify;
@@ -192,8 +305,9 @@ input:checked + .slider:before {
 
 .btn {
     display: inline-block;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--dark-accent);
+    color: var(--dark-background);
+    font-weight: bold;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
@@ -202,12 +316,12 @@ input:checked + .slider:before {
 
 .social-links a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--dark-accent);
     margin: 0 10px;
 }
 
 .dark .social-links a {
-    color: white;
+    color: var(--dark-primary-text);
 }
 
 .btn:hover, .social-links a:hover {
@@ -215,13 +329,13 @@ input:checked + .slider:before {
 }
 
 .social-links a {
-    color: black; /* Icon color */
+    color: var(--dark-background); /* Icon color */
     margin: 0 10px;
     font-size: 30px; /* Icon size */
 }
 
 .social-links a:hover {
-    color: #0056b3; /* Icon hover color */
+    color: var(--dark-accent); /* Icon hover color */
 }
 
 
@@ -250,8 +364,8 @@ p {
 }
 
 .dark .site-footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--dark-secondary-background);
+    color: var(--dark-primary-text);
 }
 
 .site-footer .social-links {
@@ -259,16 +373,16 @@ p {
 }
 
 .site-footer .social-links a {
-    color: #333; /* Example icon color */
+    color: var(--dark-secondary-background); /* Example icon color */
     margin: 0 10px; /* Spacing between icons */
     font-size: 24px; /* Icon size */
 }
 
 .dark .site-footer .social-links a {
-    color: white;
+    color: var(--dark-primary-text);
 }
 
 .site-footer .social-links a:hover {
-    color: #007bff; /* Example hover color */
+    color: var(--dark-accent); /* Example hover color */
 }
 
